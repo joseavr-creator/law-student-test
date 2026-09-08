@@ -1,20 +1,25 @@
-```javascript
-// navigation.js
-// Shared navigation system for the entire website
+/* =========================================================
+   SHARED NAVIGATION SYSTEM
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Create the navigation bar
-    const nav = document.createElement("nav");
+    /*
+       Create the navigation element
+    */
 
-    nav.className = "site-navigation";
+    const navigation = document.createElement("nav");
 
-    nav.innerHTML = `
+    navigation.className = "site-navigation";
+
+
+    /*
+       Navigation HTML
+    */
+
+    navigation.innerHTML = `
+
         <div class="nav-container">
-
-            <a href="index.html" class="nav-logo">
-                YOUR NAME
-            </a>
 
             <div class="nav-links">
 
@@ -45,42 +50,76 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </div>
+
     `;
 
-    // Insert navigation at the very beginning of the page
-    document.body.insertBefore(nav, document.body.firstChild);
+
+    /*
+       Find the header and insert navigation
+       directly underneath it.
+    */
+
+    const header = document.querySelector(".site-header");
+
+    if (header) {
+
+        header.insertAdjacentElement(
+            "afterend",
+            navigation
+        );
+
+    } else {
+
+        /*
+           If a page doesn't have a header,
+           put navigation at the beginning of body.
+        */
+
+        document.body.insertBefore(
+            navigation,
+            document.body.firstChild
+        );
+
+    }
 
 
-    // Determine which page the visitor is currently on
-    const currentPage = window.location.pathname
+    /*
+       Determine which page is currently open
+    */
+
+    let currentPage = window.location.pathname
         .split("/")
         .pop()
         .replace(".html", "")
         .toLowerCase();
 
 
-    // Highlight the current page
-    const navLinks = document.querySelectorAll(".nav-links a");
+    /*
+       Get all navigation links
+    */
+
+    const navLinks = document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+    /*
+       Highlight the current page
+    */
 
     navLinks.forEach(function (link) {
 
-        const page = link.getAttribute("data-page");
+        const page = link
+            .getAttribute("data-page")
+            .toLowerCase();
+
 
         if (page === currentPage) {
+
             link.classList.add("active");
+
         }
 
     });
 
-
-    // Add "home" styling when the visitor is on index.html
-    if (
-        currentPage === "" ||
-        currentPage === "index" ||
-        currentPage === "index.html"
-    ) {
-        document.querySelector(".nav-logo").classList.add("active-logo");
-    }
-
 });
-```
