@@ -1,957 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Your Name | Prospective Law Student</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f1f3f5;
-            color: #1d2733;
-            line-height: 1.6;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: #071a33;
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .logo {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: #d9e1ea;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        /* =========================
-           HERO SECTION
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #071a33, #102d50);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 60px;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 72px);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .hero h2 {
-            font-size: 24px;
-            font-weight: 400;
-            color: #bfc9d4;
-            margin-bottom: 25px;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #d8dee6;
-            font-size: 17px;
-        }
-
-        .button-container {
-            margin-top: 35px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            margin: 5px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #071a33;
-        }
-
-        .btn-primary:hover {
-            background: #dfe5eb;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 1px solid #bfc9d4;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 34px;
-            color: #071a33;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #66717d;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            background: white;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 27px;
-            color: #071a33;
-            margin-bottom: 15px;
-        }
-
-        .about-text p {
-            color: #555f6a;
-            margin-bottom: 15px;
-        }
-
-        .about-highlight {
-            background: #eef1f4;
-            padding: 25px;
-            border-left: 4px solid #071a33;
-            border-radius: 5px;
-        }
-
-        /* =========================
-           STATS
-        ========================= */
-
-        .stats {
-            background: #e6e9ed;
-        }
-
-        .stats-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-7px);
-        }
-
-        .stat-card h3 {
-            color: #071a33;
-            font-size: 32px;
-        }
-
-        .stat-card p {
-            color: #697581;
-            font-size: 14px;
-        }
-
-        /* =========================
-           EDUCATION
-        ========================= */
-
-        .education {
-            background: white;
-        }
-
-        .timeline {
-            max-width: 900px;
-            margin: auto;
-            border-left: 3px solid #071a33;
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            margin-bottom: 35px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            width: 13px;
-            height: 13px;
-            background: #071a33;
-            border-radius: 50%;
-            position: absolute;
-            left: -38px;
-            top: 7px;
-        }
-
-        .timeline-item h3 {
-            color: #071a33;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item span {
-            color: #77828d;
-            font-size: 14px;
-        }
-
-        /* =========================
-           ACTIVITIES
-        ========================= */
-
-        .activities {
-            background: #eef1f4;
-        }
-
-        .cards {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .card-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #071a33;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #626d78;
-            font-size: 15px;
-        }
-
-        /* =========================
-           INTERESTS
-        ========================= */
-
-        .interests {
-            background: white;
-        }
-
-        .interest-list {
-            max-width: 900px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .interest {
-            background: #071a33;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .interest:hover {
-            background: #34495e;
-            transform: scale(1.05);
-        }
-
-        /* =========================
-           CAREER GOALS
-        ========================= */
-
-        .goals {
-            background: #e6e9ed;
-        }
-
-        .goals-container {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .goal-box {
-            background: white;
-            padding: 35px;
-            border-radius: 8px;
-            border-top: 4px solid #071a33;
-        }
-
-        .goal-box h3 {
-            color: #071a33;
-            margin-bottom: 15px;
-        }
-
-        /* =========================
-           RESUME
-        ========================= */
-
-        .resume {
-            background: white;
-            text-align: center;
-        }
-
-        .resume p {
-            max-width: 650px;
-            margin: 0 auto 25px;
-            color: #626d78;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            background: #071a33;
-            color: white;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 34px;
-            margin-bottom: 15px;
-        }
-
-        .contact p {
-            color: #c5ced8;
-            margin-bottom: 25px;
-        }
-
-        .contact a {
-            color: white;
-            text-decoration: none;
-            border-bottom: 1px solid #9aa7b5;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #041020;
-            color: #8996a4;
-            text-align: center;
-            padding: 20px;
-            font-size: 13px;
-        }
-
-        /* =========================
-           RESPONSIVE DESIGN
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .about-container,
-            .goals-container {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 6%;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-        }
-    </style>
 </head>
+
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav>
-    <div class="logo">YOUR NAME</div>
-
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#interests">Interests</a></li>
-        <li><a href="#goals">Goals</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+    <div class="site-wrapper">
 
 
-<!-- =========================
-     HERO
-========================= -->
+        <!-- HEADER -->
 
-<header class="hero">
+        <header class="site-header">
 
-    <div class="hero-content">
+            <div class="logo-area">
 
-        <h1>YOUR NAME</h1>
+                <a href="index.html">
+                    YOUR NAME
+                </a>
 
-        <h2>Prospective Law Student</h2>
+            </div>
 
-        <p>
-            Welcome to my academic and professional portfolio.
-            I am an aspiring law student committed to academic excellence,
-            leadership, service, and developing a career in the legal profession.
-        </p>
 
-        <div class="button-container">
-            <a href="#about" class="btn btn-primary">
-                Explore My Portfolio
-            </a>
+            <div class="header-information">
 
-            <a href="#contact" class="btn btn-outline">
-                Contact Me
-            </a>
+                <div>
+
+                    <h1>
+                        Prospective Law Student
+                    </h1>
+
+                    <p>
+                        Academic Portfolio • Professional Development • Future Legal Career
+                    </p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!--
+            navigation.js automatically
+            inserts the navigation here.
+        -->
+
+
+        <!-- MAIN PAGE -->
+
+        <div class="page-layout">
+
+
+            <!-- LEFT SIDEBAR -->
+
+            <aside class="left-sidebar">
+
+                <h2>
+                    Portfolio
+                </h2>
+
+                <ul>
+
+                    <li>
+                        <a href="about.html">
+                            About Me
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="education.html">
+                            Academic Background
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="extracurriculars.html">
+                            Activities
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="goals.html">
+                            Career Goals
+                        </a>
+                    </li>
+
+                </ul>
+
+            </aside>
+
+
+            <!-- MAIN CONTENT -->
+
+            <main class="main-content">
+
+
+                <!-- HERO -->
+
+                <div class="hero-area">
+
+                    <div>
+
+                        <h2>
+                            Welcome to My Portfolio
+                        </h2>
+
+                        <p>
+                            A look into my academic journey,
+                            experiences, interests, and aspirations
+                            for a career in law.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <h1>
+                    About My Journey
+                </h1>
+
+                <p>
+                    Welcome to my academic and professional portfolio.
+                    This website provides an overview of my education,
+                    experiences, extracurricular activities, interests,
+                    and future goals as I prepare for law school.
+                </p>
+
+                <p>
+                    My undergraduate experience has allowed me to develop
+                    strong analytical, communication, leadership, and
+                    problem-solving skills. I intend to build upon these
+                    skills through legal education and a future career
+                    in the legal profession.
+                </p>
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-container">
+
+                    <div class="stat">
+
+                        <h3>
+                            3.XX
+                        </h3>
+
+                        <p>
+                            GPA
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <h3>
+                            XX
+                        </h3>
+
+                        <p>
+                            Credit Hours
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <h3>
+                            XX
+                        </h3>
+
+                        <p>
+                            Activities
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARDS -->
+
+                <div class="content-grid">
+
+                    <div class="content-card">
+
+                        <h3>
+                            Academic Excellence
+                        </h3>
+
+                        <p>
+                            My academic experiences have helped me
+                            develop the discipline and critical thinking
+                            skills necessary for success in law school.
+                        </p>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <h3>
+                            Leadership
+                        </h3>
+
+                        <p>
+                            Through extracurricular and professional
+                            experiences, I continue to develop as a
+                            leader and communicator.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+
+            <!-- RIGHT SIDEBAR -->
+
+            <aside class="right-sidebar">
+
+                <div class="sticky-content">
+
+                    <h2>
+                        Quick Information
+                    </h2>
+
+
+                    <div class="sidebar-box">
+
+                        <h3>
+                            Current Focus
+                        </h3>
+
+                        <p>
+                            Preparing for law school and developing
+                            my academic and professional profile.
+                        </p>
+
+                    </div>
+
+
+                    <div class="sidebar-box">
+
+                        <h3>
+                            Legal Interests
+                        </h3>
+
+                        <p>
+                            Business Law, Corporate Law,
+                            Public Policy, and Legal Advocacy.
+                        </p>
+
+                    </div>
+
+
+                    <div class="sidebar-box">
+
+                        <h3>
+                            Career Goal
+                        </h3>
+
+                        <p>
+                            Attend law school and build a meaningful
+                            career in the legal profession.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
         </div>
+
+
+        <!-- FOOTER -->
+
+        <footer class="site-footer">
+
+            <p>
+                © 2026 Your Name
+            </p>
+
+            <p>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="education.html">
+                    Education
+                </a>
+
+                <a href="goals.html">
+                    Goals
+                </a>
+
+            </p>
+
+            <p>
+                Prospective Law Student Portfolio
+            </p>
+
+        </footer>
+
 
     </div>
 
-</header>
 
+    <!-- JAVASCRIPT -->
 
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about" class="about">
-
-    <div class="section-title">
-        <h2>About Me</h2>
-        <p>Academic background, values, and personal development</p>
-    </div>
-
-    <div class="about-container">
-
-        <div class="about-text">
-
-            <h3>My Story</h3>
-
-            <p>
-                I am currently pursuing my undergraduate education with the
-                goal of attending law school and building a career in the
-                legal profession.
-            </p>
-
-            <p>
-                My academic experiences, extracurricular involvement, and
-                professional development have helped me develop the
-                communication, analytical, leadership, and problem-solving
-                skills necessary for success in law school.
-            </p>
-
-            <p>
-                This website provides an overview of my academic achievements,
-                experiences, interests, and future goals.
-            </p>
-
-        </div>
-
-        <div class="about-highlight">
-
-            <h3>Why Law?</h3>
-
-            <p>
-                My interest in law comes from my desire to understand how
-                legal systems shape businesses, communities, and individuals.
-                I hope to use a legal education to advocate for others,
-                solve complex problems, and make a meaningful impact.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     STATS
-========================= -->
-
-<section class="stats">
-
-    <div class="section-title">
-        <h2>Academic Snapshot</h2>
-        <p>A quick look at my academic progress</p>
-    </div>
-
-    <div class="stats-grid">
-
-        <div class="stat-card">
-            <h3>3.XX</h3>
-            <p>Current GPA</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>XX</h3>
-            <p>Credit Hours</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>XX</h3>
-            <p>Major Courses</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>XX</h3>
-            <p>Leadership Roles</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EDUCATION
-========================= -->
-
-<section id="education" class="education">
-
-    <div class="section-title">
-        <h2>Education</h2>
-        <p>My academic journey</p>
-    </div>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-
-            <h3>Your University</h3>
-
-            <span>20XX – Present</span>
-
-            <p>
-                Bachelor's Degree in Your Major
-            </p>
-
-            <p>
-                GPA: 3.XX | Expected Graduation: May 20XX
-            </p>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <h3>Relevant Coursework</h3>
-
-            <span>Academic Preparation</span>
-
-            <p>
-                Courses related to political science, business, economics,
-                communication, ethics, history, writing, and other areas
-                supporting my preparation for law school.
-            </p>
-
-        </div>
-
-        <div class="timeline-item">
-
-            <h3>Academic Achievements</h3>
-
-            <span>Honors & Recognition</span>
-
-            <p>
-                Dean's List, scholarships, academic awards, research,
-                presentations, or other accomplishments.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ACTIVITIES
-========================= -->
-
-<section id="activities" class="activities">
-
-    <div class="section-title">
-        <h2>Extracurricular Activities</h2>
-        <p>Leadership, involvement, and experiences outside the classroom</p>
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-icon">⚖️</div>
-
-            <h3>Pre-Law Activities</h3>
-
-            <p>
-                Describe your involvement in pre-law organizations,
-                mock trial, debate, legal research, internships, or
-                other law-related experiences.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🎓</div>
-
-            <h3>Leadership</h3>
-
-            <p>
-                Describe leadership positions, organizations, projects,
-                campus involvement, or experiences where you helped
-                lead others.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🤝</div>
-
-            <h3>Community Service</h3>
-
-            <p>
-                Describe volunteer work, community involvement,
-                service organizations, or initiatives that demonstrate
-                your commitment to others.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">💼</div>
-
-            <h3>Professional Experience</h3>
-
-            <p>
-                Describe employment, internships, research positions,
-                or other professional experiences that have contributed
-                to your development.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">📚</div>
-
-            <h3>Academic Research</h3>
-
-            <p>
-                Highlight research projects, papers, presentations,
-                independent studies, or other academic work.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🌎</div>
-
-            <h3>Personal Development</h3>
-
-            <p>
-                Describe experiences that have challenged you,
-                broadened your perspective, or contributed to your
-                personal growth.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     INTERESTS
-========================= -->
-
-<section id="interests" class="interests">
-
-    <div class="section-title">
-
-        <h2>Academic & Legal Interests</h2>
-
-        <p>
-            Areas I am interested in exploring throughout my legal education
-        </p>
-
-    </div>
-
-    <div class="interest-list">
-
-        <span class="interest">Business Law</span>
-        <span class="interest">Corporate Law</span>
-        <span class="interest">Criminal Law</span>
-        <span class="interest">Constitutional Law</span>
-        <span class="interest">Civil Rights</span>
-        <span class="interest">Legal Advocacy</span>
-        <span class="interest">Public Policy</span>
-        <span class="interest">Entrepreneurship</span>
-        <span class="interest">Negotiation</span>
-        <span class="interest">Leadership</span>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     GOALS
-========================= -->
-
-<section id="goals" class="goals">
-
-    <div class="section-title">
-
-        <h2>Career & Personal Goals</h2>
-
-        <p>
-            Where I am going and what I hope to accomplish
-        </p>
-
-    </div>
-
-    <div class="goals-container">
-
-        <div class="goal-box">
-
-            <h3>Career Goals</h3>
-
-            <p>
-                My goal is to attend a competitive law school, develop a
-                strong foundation in legal reasoning and advocacy, and
-                ultimately pursue a career in [YOUR AREA OF LAW].
-            </p>
-
-            <br>
-
-            <p>
-                I hope to use my legal education to work on meaningful
-                problems, serve clients effectively, and contribute to
-                the legal profession.
-            </p>
-
-        </div>
-
-
-        <div class="goal-box">
-
-            <h3>Personal Goals</h3>
-
-            <p>
-                I want to continue developing as a leader, communicator,
-                critical thinker, and professional.
-            </p>
-
-            <br>
-
-            <p>
-                My personal goal is to become someone who approaches
-                difficult problems with discipline, integrity, and a
-                willingness to learn.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RESUME
-========================= -->
-
-<section class="resume">
-
-    <div class="section-title">
-
-        <h2>Resume & Additional Materials</h2>
-
-        <p>
-            Learn more about my academic and professional experience.
-        </p>
-
-    </div>
-
-    <!--
-        Replace "resume.pdf" with the name of your actual resume file.
-        Upload the PDF to the same GitHub repository.
-    -->
-
-    <a href="resume.pdf" target="_blank" class="btn btn-primary">
-        View My Resume
-    </a>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section id="contact" class="contact">
-
-    <h2>Let's Connect</h2>
-
-    <p>
-        I welcome opportunities to connect with legal professionals,
-        mentors, educators, and members of the law-school community.
-    </p>
-
-    <p>
-        Email:
-        <a href="mailto:your.email@example.com">
-            your.email@example.com
-        </a>
-    </p>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <p>
-        © 2026 Your Name | Prospective Law Student
-    </p>
-
-</footer>
+    <script src="navigation.js"></script>
 
 </body>
+
 </html>
