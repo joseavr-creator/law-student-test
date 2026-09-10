@@ -68,16 +68,11 @@ body {
 /* Logo area */
 
 .logo-area {
-    /* =========================================================
-   SCALES OF JUSTICE LOGO
-   ========================================================= */
-
-.logo-area {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 15px;
+    padding: 20px;
 
     border-right: 2px solid #1c1c1c;
 
@@ -85,34 +80,14 @@ body {
 }
 
 .logo-area a {
-    display: flex;
+    color: #071a33;
 
-    align-items: center;
-    justify-content: center;
+    text-decoration: none;
 
-    width: 100%;
-    height: 100%;
-}
+    font-size: 32px;
+    font-weight: 700;
 
-.justice-logo {
-    width: 95px;
-    height: 95px;
-
-    object-fit: contain;
-
-    display: block;
-
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
-}
-
-
-/* Subtle interaction when hovering */
-
-.logo-area a:hover .justice-logo {
-    transform: scale(1.05);
-    opacity: 0.85;
+    letter-spacing: 1px;
 }
 
 
